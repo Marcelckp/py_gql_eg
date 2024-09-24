@@ -1,27 +1,48 @@
 import strawberry
 from typing import List, Optional
-# Task 10 - Code Here
+
 @strawberry.type
 class CommentsType:
-    id: None
+    id: int
+    user_id: int
+    post_id: int
+    body: str
 
 @strawberry.type
 class PostType:
-    id: None
+    id: int
+    user_id: int
+    title: str
+    body: str
+    comments: Optional[List[CommentsType]]
 
 @strawberry.type
 class UserType:
-    id: None
+    id: int
+    name: str
+    email: str
+    address: str
+    phone_number: str
+    sex: str
+    posts: Optional[List[PostType]]
+    comments: Optional[List[CommentsType]]
 
-# Task 11 - Code Here
 @strawberry.input
 class UserInput:
-    id: None
+    name: str
+    email: str
+    address: str
+    phone_number: str
+    sex: str
 
 @strawberry.input
 class PostInput:
-    id: None
+    user_id: int
+    title: str
+    body: str
 
 @strawberry.input
 class CommentInput:
-    id: None
+    user_id: int
+    post_id: int
+    body: str
